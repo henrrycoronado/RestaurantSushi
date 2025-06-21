@@ -1,14 +1,14 @@
 import { Router } from 'express';
-import * as categoryController from '../controllers/categorias.controller.js';
-import { protect, adminOnly } from '../MiddleWare/auth.middleware.js';
+import * as categoryController from '../controllers/category.controller.js';
+import { protect, adminOnly } from '../middleware/auth.middleware.js';
 
-const router = Router();
+const categoryRoutes = Router();
 
-router.get('/', categoryController.getAll);
-router.get('/:id', categoryController.getById);
+categoryRoutes.get('/', categoryController.getAll);
+categoryRoutes.get('/:id', categoryController.getById);
 
-router.post('/', protect, adminOnly, categoryController.create);
-router.put('/:id', protect, adminOnly, categoryController.update);
-router.delete('/:id', protect, adminOnly, categoryController.remove);
+categoryRoutes.post('/', protect, adminOnly, categoryController.create);
+categoryRoutes.put('/:id', protect, adminOnly, categoryController.update);
+categoryRoutes.delete('/:id', protect, adminOnly, categoryController.remove);
 
-export default router;
+export default categoryRoutes;

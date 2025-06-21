@@ -1,6 +1,6 @@
 import { prisma } from '../prisma/client.js';
-import { hashPassword, comparePassword } from '../utils/hash.util.js';
-import { generateToken } from '../utils/token.util.js';
+import { hashPassword, comparePassword } from '../utils/hash.utils.js';
+import { generateToken } from '../utils/token.utils.js';
 
 export const register = async (req, res) => {
     const { name, email, password } = req.body;
