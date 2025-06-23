@@ -1,0 +1,85 @@
+navbar-comp{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 40px;
+    align-content: center;
+    padding-top: 40px;
+    z-index: 10;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background: none;
+    font-size: 10px;
+}
+
+.navbar__seccion__left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    padding-left: 30px;
+    gap: 30px;
+}
+
+.navbar__seccion__right {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    height: 100%;
+    padding-right: 30px;
+}
+
+.navbar__seccion__list {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: 100%;
+    background-color: black;
+    padding: 0 20px;
+    border-radius: 12px;
+}
+
+.navbar__seccion__button {
+    justify-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #EFE7D2;
+}
+
+.navbar__seccion__buttonSpecial {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #EFE7D2;
+    background-color: #181818;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #EFE7D2;
+}
+
+.navbar__seccion__buttonImg{
+    width: auto;
+    height: 15px;
+    align-items: center;
+    justify-content: center;
+}

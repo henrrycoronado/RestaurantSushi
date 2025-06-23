@@ -1,0 +1,162 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyectos Online</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script type="module" defer src="./src/index.js"></script>
+</head>
+<body>
+    <navbar-comp></navbar-comp>
+    <main id="main"></main>
+    <template id="home-page_template">
+        <link rel="stylesheet" href="./src/blocks/home/home.css">
+        <div class="home">
+          <div class="home__presentation">
+            <img class="home__presentation__img" src="/src/assets/fondoHome.png">
+            <div class="home__presentation__text">
+              <div class="home__presentation__text__title">
+                <h1>Sushi Sensation</h1>
+              </div>
+              <div class="home__presentation__text__socialLinks">
+                <a class="home__presentation__text__link">
+                  <img src="/src/assets/instagram.svg" class="home__presentation__link__img"/>
+                </a>
+                <a class="home__presentation__text__link">
+                  <img src="/src/assets/facebook.svg" class="home__presentation__link__img"/>
+                </a>
+                <a class="home__presentation__text__link">
+                  <img src="/src/assets/twiteer.svg" class="home__presentation__link__img"/>
+                </a>
+              </div>            
+            </div>
+          </div>
+          <div class="home__cards">
+            <ul class="home__cards__list">
+              <li class="home__cards__card">
+                <img class="home__card__img" src="/src/assets/MENU.png">
+                <a href="/menu" class="home__cards__card__title">
+                  <h2>Menú </h2>
+                  <img src="/src/assets/flecha.svg"/>
+                </a>
+              </li>
+              <li class="home__cards__card">
+                <img class="home__card__img" src="/src/assets/RESERVATION.png">
+                <a class="home__cards__card__title">
+                  <h2>Reservation </h2>
+                  <img src="/src/assets/flecha.svg"/>
+                </a>
+              </li>
+              <li class="home__cards__card">
+                <img class="home__card__img" src="/src/assets/OUR.png">
+                <a class="home__cards__card__title">
+                  <h2>Our restaurant </h2>
+                  <img src="/src/assets/flecha.svg"/>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </template>
+    <template id="menu-page_template">
+      <link rel="stylesheet" href="./src/blocks/menu/menu.css">
+      <div class="menu">
+                <div class="menu__presentation">
+                    <img class="menu__presentation__img" src="/src/assets/menu-background.png" alt="Plato de sushi">
+                    <div class="menu__presentation__text">
+                        <h1 class="menu__presentation__text__title">MENU</h1>
+                    </div>
+                </div>
+
+                <div class="menu__content">
+                    <nav class="menu__content__nav">
+                        <ul class="menu__content__nav__list">
+                            <li class="menu__content__nav__item menu__content__nav__item--active"><a>ALL</a></li>
+                            <li class="menu__content__nav__item"><a>MAKI</a></li>
+                            <li class="menu__content__nav__item"><a>URAMAKI</a></li>
+                            <li class="menu__content__nav__item"><a>SPECIAL ROLLS</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="menu__content__items-container">
+                        <div class="menu__content__category">
+                            <h2 class="menu__content__category__title">MAKI</h2>
+                            <div class="menu__item">
+                                <img class="menu__item__img" src="/src/assets/maki-spicy-tuna.png" alt="Spicy Tuna Maki">
+                                <div class="menu__item__details">
+                                    <h3 class="menu__item__title">SPICY TUNA MAKI</h3>
+                                    <p class="menu__item__description">A tantalizing blend of spicy tuna, cucumber, and avocado, harmoniously rolled in nori and seasoned rice.</p>
+                                </div>
+                                <span class="menu__item__price">$5</span>
+                            </div>
+                            <div class="menu__item">
+                                <img class="menu__item__img" src="/src/assets/maki-mango.png" alt="Mango Maki">
+                                <div class="menu__item__details">
+                                    <h3 class="menu__item__title">MANGO MAKI</h3>
+                                    <p class="menu__item__description">Wrapped mango strips, cucumber, and cream cheese to create a contrast of fresh avocado delivering a satisfying sortment of textures.</p>
+                                </div>
+                                <span class="menu__item__price">$5</span>
+                            </div>
+                            </div>
+
+                        <div class="menu__content__category">
+                            <h2 class="menu__content__category__title">URAMAKI</h2>
+                            <div class="menu__item">
+                                <img class="menu__item__img" src="/src/assets/uramaki-volcano.png" alt="Volcano Delight">
+                                <div class="menu__item__details">
+                                    <h3 class="menu__item__title">VOLCANO DELIGHT</h3>
+                                    <p class="menu__item__description">Creamy crab salad, avocado, and cucumber rolled inside, topped with spicy tuna and drizzled with fiery volcano sauce.</p>
+                                </div>
+                                <span class="menu__item__price">$12</span>
+                            </div>
+                            </div>
+
+                         <div class="menu__content__category">
+                            <h2 class="menu__content__category__title">SPECIAL ROLLS</h2>
+                            <div class="menu__item">
+                                <img class="menu__item__img" src="/src/assets/maki-spicy-tuna.png" alt="Special Roll">
+                                <div class="menu__item__details">
+                                    <h3 class="menu__item__title">DRAGON ROLL</h3>
+                                    <p class="menu__item__description">Classic roll with eel and cucumber, topped with avocado slices resembling dragon scales.</p>
+                                </div>
+                                <span class="menu__item__price">$14</span>
+                            </div>
+                             <div class="menu__item">
+                                <img class="menu__item__img" src="/src/assets/maki-mango.png" alt="Special Roll 2">
+                                <div class="menu__item__details">
+                                    <h3 class="menu__item__title">RAINBOW ROLL</h3>
+                                    <p class="menu__item__description">Crab, avocado, and cucumber roll topped with a vibrant assortment of fresh fish like tuna, salmon, and yellowtail.</p>
+                                </div>
+                                <span class="menu__item__price">$15</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </template>
+    <template id="not-found_template">
+      <link rel="stylesheet" href="./src/blocks/notFound/notFound.css">
+        <div class="notfound">
+                <div class="notfound__presentation">
+                    <img class="notfound__presentation__img" src="/src/assets/NotFound_fondo.png" alt="Plato vacío en un restaurante oscuro">
+                    <div class="notfound__presentation__text">
+                        <h1 class="notfound__presentation__text__title">404</h1>
+                    </div>
+                </div>
+
+                <div class="notfound__content">
+                    <div class="notfound__content__info">
+                        <h2 class="notfound__content__info__title">Página No Encontrada</h2>
+                        <p class="notfound__content__info__description">
+                            Lo sentimos, parece que el plato que buscas no está en nuestro menú. 
+                            La página que intentas visitar no existe o ha sido movida.
+                        </p>
+                    </div>
+                    <a href="/" class="notfound__content__cta">Volver al Inicio</a>
+                </div>
+            </div>
+    </template>
+</body>
+</html>
