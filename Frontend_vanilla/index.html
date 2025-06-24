@@ -442,13 +442,9 @@
 
                 <footer class="article__footer">
                     <div class="article__comment-form">
-                        <input type="text" class="article__comment-form__input" placeholder="Author: Name">
+                        <p class="article__comment-form__autor">Author: Name</p>
                         <button class="article__comment-form__button">SAVE</button>
                     </div>
-                    <nav class="article__pagination">
-                        <a href="#" class="article__pagination__link">&larr; Uramaki</a>
-                        <a href="#" class="article__pagination__link">Rols &rarr;</a>
-                    </nav>
                 </footer>
             </div>
         </div>
@@ -504,11 +500,6 @@
                 </div>
                 <button class="cart__order-button">PLACE ORDER</button>
             </div>
-            
-            <footer class="cart__footer">
-                <a href="#" class="cart__footer__link">Licensing</a>
-                <a href="#" class="cart__footer__link">Styleguide</a>
-            </footer>
         </div>
     </div>
     </template>
@@ -572,13 +563,12 @@
                 <h2 class="login__title">LOGIN</h2>
                 <form class="login__form">
                     <div class="login__form-group">
-                        <label for="login-email" class="login__label">E-mail</label>
-                        <input type="email" id="login-email" class="login__input">
+                        <input type="email" id="login-email" class="login__input" placeholder="E-mail">
                     </div>
                     <div class="login__form-group">
-                        <label for="login-password" class="login__label">Password</label>
-                        <input type="password" id="login-password" class="login__input">
+                        <input type="password" id="login-password" class="login__input" placeholder="Password">
                     </div>
+                    <label class="login__label">Mensaje</label>
                     <button type="submit" class="login__submit-button">LOGIN</button>
                 </form>
                 <a href="/signup" class="login__alternative-link">Go to registration instead</a>

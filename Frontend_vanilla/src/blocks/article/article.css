@@ -99,22 +99,25 @@ article-page {
     padding-top: 20px;
     margin-top: 20px;
     border-top: 1px solid #333;
+    align-items: center;
+    justify-content: center;
 }
 
 .article__comment-form {
     display: flex;
-    border: 1px solid #444;
-    border-radius: 8px;
+    flex-direction: column;
     overflow: hidden;
 }
 
-.article__comment-form__input {
-    flex-grow: 1;
+.article__comment-form__autor {
+    height: max-content;
+    width: max-content;
     background: transparent;
     border: none;
     padding: 15px;
     color: #EFE7D2;
     font-size: 14px;
+    margin: 0;
 }
 
 .article__comment-form__input:focus {
@@ -125,30 +128,14 @@ article-page {
     background-color: #EFE7D2;
     color: #1C1C1C;
     border: none;
+    border-radius: 10px;
     padding: 0 30px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    height: 40px;
 }
 .article__comment-form__button:hover {
     background-color: #c7bfab;
 }
 
-
-.article__pagination {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 5px;
-}
-
-.article__pagination__link {
-    color: #888;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.article__pagination__link:hover {
-    color: #EFE7D2;
-}
