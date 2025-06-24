@@ -1,0 +1,133 @@
+about-page {
+    width: 100%;
+    height: 100%;
+}
+
+.about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+}
+
+.about__presentation {
+    position: relative;
+    display: flex;
+    width: 50%;
+    height: 95%;
+    padding-left: 15px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.about__presentation__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.about__presentation__text {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    z-index: 10;
+}
+
+.about__presentation__text__title {
+    font-size: 60px;
+    font-weight: bold;
+    color: #EFE7D2;
+}
+
+.about__content {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 95%;
+    padding: 40px 30px;
+    margin-right: 15px;
+    gap: 40px; 
+    overflow-y: auto;
+}
+
+.about__artistry,
+.about__story {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.about__artistry__text,
+.about__story__text {
+    flex: 1;
+}
+
+.about__artistry__title,
+.about__story__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #EFE7D2;
+}
+
+.about__artistry__description,
+.about__story__description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #999;
+}
+
+.about__artistry__img {
+    width: 180px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.about__story__img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.about__accolades {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.accolade-card {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.accolade-card__stars {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #EFE7D2;
+    letter-spacing: 2px;
+}
+
+.accolade-card__title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    color: #EFE7D2;
+}
+
+.accolade-card__subtitle {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #888;
+}

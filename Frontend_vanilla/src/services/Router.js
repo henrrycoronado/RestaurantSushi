@@ -33,26 +33,38 @@ export const Router = {
             currentPage.remove();
         }
         let pageElement = null;
-        const navbar = document.getElementsByTagName("navbar-comp")[0];
+        let targetNavbarWidth = "50%";
         switch (route) {
             case "/":
                 pageElement = document.createElement("home-page");
-                navbar.style.width = "80%";
+                targetNavbarWidth = "80%";
                 break;
             case "/menu":
                 pageElement = document.createElement("menu-page");
-                navbar.style.width = "50%";
+                break;
+            case "/reservation":
+                pageElement = document.createElement("reservation-page");
+                break;
+            case "/about":
+                pageElement = document.createElement("about-page");
                 break;
             default:
                 pageElement = document.createElement("notfound-page");
-                navbar.style.width = "50%";
                 break;
+        }
+        const navbar = document.getElementsByTagName("navbar-comp")[0];
+        if (navbar && navbar.style.width !== targetNavbarWidth) {
+            navbar.style.width = targetNavbarWidth;
         }
         if (pageElement) {
             main.appendChild(pageElement);
             setTimeout(() => {
                 pageElement.classList.add('page-visible');
             }, 10);
+            const modal = document.querySelector("modal-comp");
+            if (modal) {
+                modal.hide();
+            }
         }
         window.scrollTo(0, 0);
         Router.navigate = false;

@@ -9,3 +9,5 @@ npm install express cors dotenv
 npm install jsonwebtoken bcryptjs
 
 npm install -D nodemon
+
+npm install zod

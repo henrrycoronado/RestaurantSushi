@@ -10,6 +10,7 @@
 </head>
 <body>
     <navbar-comp></navbar-comp>
+    <modal-comp></modal-comp>
     <main id="main"></main>
     <template id="home-page_template">
         <link rel="stylesheet" href="./src/blocks/home/home.css">
@@ -21,13 +22,13 @@
                 <h1>Sushi Sensation</h1>
               </div>
               <div class="home__presentation__text__socialLinks">
-                <a class="home__presentation__text__link">
+                <a href="https://www.instagram.com" class="home__presentation__text__link">
                   <img src="/src/assets/instagram.svg" class="home__presentation__link__img"/>
                 </a>
-                <a class="home__presentation__text__link">
+                <a href="https://www.facebook.com" class="home__presentation__text__link">
                   <img src="/src/assets/facebook.svg" class="home__presentation__link__img"/>
                 </a>
-                <a class="home__presentation__text__link">
+                <a href="https://www.x.com" class="home__presentation__text__link">
                   <img src="/src/assets/twiteer.svg" class="home__presentation__link__img"/>
                 </a>
               </div>            
@@ -44,14 +45,14 @@
               </li>
               <li class="home__cards__card">
                 <img class="home__card__img" src="/src/assets/RESERVATION.png">
-                <a class="home__cards__card__title">
+                <a href="/reservation" class="home__cards__card__title">
                   <h2>Reservation </h2>
                   <img src="/src/assets/flecha.svg"/>
                 </a>
               </li>
               <li class="home__cards__card">
                 <img class="home__card__img" src="/src/assets/OUR.png">
-                <a class="home__cards__card__title">
+                <a href="/about" class="home__cards__card__title">
                   <h2>Our restaurant </h2>
                   <img src="/src/assets/flecha.svg"/>
                 </a>
@@ -64,7 +65,7 @@
       <link rel="stylesheet" href="./src/blocks/menu/menu.css">
       <div class="menu">
                 <div class="menu__presentation">
-                    <img class="menu__presentation__img" src="/src/assets/menu-background.png" alt="Plato de sushi">
+                    <img class="menu__presentation__img" src="/src/assets/menu_fondo.png" alt="Plato de sushi">
                     <div class="menu__presentation__text">
                         <h1 class="menu__presentation__text__title">MENU</h1>
                     </div>
@@ -157,6 +158,110 @@
                     <a href="/" class="notfound__content__cta">Volver al Inicio</a>
                 </div>
             </div>
+    </template>
+    <template id="reservation-page-template">
+    <link rel="stylesheet" href="./src/blocks/reservation/reservation.css">
+    <div class="reservation">
+        <div class="reservation__presentation">
+            <img class="reservation__presentation__img" src="/src/assets/reservation_fondo.png" alt="Mesa de restaurante con copas de vino">
+            <div class="reservation__presentation__text">
+                <h1 class="reservation__presentation__text__title">BOOK<br>A TABLE</h1>
+            </div>
+        </div>
+
+        <div class="reservation__content">
+            <h2 class="reservation__content__title">RESERVATION</h2>
+            <p class="reservation__content__description">
+                Secure your spot at Qitchen, where exceptional sushi and a
+                remarkable dining experience await.
+            </p>
+
+            <div class="reservation__form">
+                <div class="reservation__form__inputs">
+                    <div class="reservation__form__input-group">
+                        <span class="reservation__form__label">Guests</span>
+                        <div class="reservation__form__input"></div>
+                    </div>
+                    <div class="reservation__form__input-group">
+                        <span class="reservation__form__label">Date</span>
+                        <div class="reservation__form__input"></div>
+                    </div>
+                    <div class="reservation__form__input-group">
+                        <span class="reservation__form__label">Time</span>
+                        <div class="reservation__form__input"></div>
+                    </div>
+                </div>
+                <button class="reservation__form__button">RESERVE</button>
+            </div>
+
+            <div class="reservation__pending">
+                <h3 class="reservation__pending__title">Pending reservations</h3>
+                <div class="reservation__pending__list">
+                    <div class="reservation-item">
+                        <div class="reservation-item__left">
+                            <span class="reservation-item__name">Jean daniel</span>
+                            <span class="reservation-item__seats">3 seats</span>
+                        </div>
+                        <div class="reservation-item__right">
+                            <span class="reservation-item__time">17:00</span>
+                            <span class="reservation-item__date">June 23, 2025</span>
+                        </div>
+                    </div>
+                     </div>
+            </div>
+        </div>
+    </div>
+    </template>
+    <template id="about-page-template">
+    <link rel="stylesheet" href="./src/blocks/about/about.css">
+    <div class="about">
+        <div class="about__presentation">
+            <img class="about__presentation__img" src="/src/assets/about_fondo.png" alt="Cocinero sazonando edamame">
+            <div class="about__presentation__text">
+                <h1 class="about__presentation__text__title">ABOUT</h1>
+            </div>
+        </div>
+
+        <div class="about__content">
+            <div class="about__artistry">
+                <div class="about__artistry__text">
+                    <h2 class="about__artistry__title">SUSHI ARTISTRY REDEFINED</h2>
+                    <p class="about__artistry__description">
+                        Where culinary craftsmanship meets modern elegance. Indulge in the finest sushi, expertly curated to elevate your dining experience.
+                    </p>
+                </div>
+                <img class="about__artistry__img" src="/src/assets/about_bar.png" alt="Interior del bar del restaurante">
+            </div>
+
+            <div class="about__accolades">
+                <div class="accolade-card">
+                    <div class="accolade-card__stars">★★★★★</div>
+                    <h3 class="accolade-card__title">TRIP ADVISOR</h3>
+                    <p class="accolade-card__subtitle">BEST STEAK HOUSE<br>PRAGUE</p>
+                </div>
+                <div class="accolade-card">
+                    <div class="accolade-card__stars">★★★★★</div>
+                    <h3 class="accolade-card__title">MICHELIN GUIDE</h3>
+                    <p class="accolade-card__subtitle">BEST STEAK HOUSE<br>PRAGUE</p>
+                </div>
+                <div class="accolade-card">
+                    <div class="accolade-card__stars">★★★★★</div>
+                    <h3 class="accolade-card__title">STAR DINING</h3>
+                    <p class="accolade-card__subtitle">BEST STEAK HOUSE<br>PRAGUE</p>
+                </div>
+            </div>
+
+            <div class="about__story">
+                <img class="about__story__img" src="/src/assets/about_chefs.png" alt="Chefs preparando comida en la cocina">
+                <div class="about__story__text">
+                    <h2 class="about__story__title">OUR STORY</h2>
+                    <p class="about__story__description">
+                        Founded with a passion for culinary excellence, Qitchen's journey began in the heart of Prague. Over years, it evolved into a haven for sushi enthusiasts, celebrated for its artful mastery and devotion to redefining gastronomy.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
     </template>
 </body>
 </html>

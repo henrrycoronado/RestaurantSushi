@@ -5,8 +5,11 @@ import { LocalStorage } from "./services/Storage.js";
 
 import { Home } from "./blocks/home/home.js";
 import { Menu } from "./blocks/menu/menu.js";
+import { Reservation } from "./blocks/reservation/reservation.js";
+import { About } from "./blocks/about/about.js";
 import { NotFound } from "./blocks/notFound/notFound.js";
 import { Navbar } from "./blocks/navbar/navbar.js";
+import { Modal } from "./blocks/modal/modal.js";
 
 globalThis.app = {};
 app.router = Router;

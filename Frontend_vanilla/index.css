@@ -1,6 +1,8 @@
 @import url('./src/blocks/navbar/navbar.css');
+@import url('./src/blocks/modal/modal.css');
 @import url('./src/blocks/home/home.css');
 @import url('./src/blocks/menu/menu.css');
+@import url('./src/blocks/reservation/reservation.css');
 @import url('./src/blocks/notFound/notFound.css');
 @import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 
@@ -19,6 +21,7 @@ body {
     background-color: #0A0B0A;
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 main{

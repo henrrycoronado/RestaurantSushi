@@ -1,4 +1,3 @@
-
 menu-page {
     width: 100%;
     height: 100%;
@@ -11,10 +10,8 @@ menu-page {
     width: 100%;
     height: 100%;
     gap: 10px;
-    background-color: #0A0B0A; /* Color de fondo general */
 }
 
-/* --- Columna Izquierda: Presentación --- */
 .menu__presentation {
     position: relative;
     display: flex;
@@ -29,7 +26,7 @@ menu-page {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.8); /* Ligero oscurecimiento para que el texto resalte */
+    filter: brightness(0.8);
 }
 
 .menu__presentation__text {
@@ -40,24 +37,22 @@ menu-page {
 }
 
 .menu__presentation__text__title {
-    font-size: 60px; /* Tamaño similar al de "Sushi Sensation" */
+    font-size: 60px;
     font-weight: bold;
     color: #EFE7D2;
 }
 
-/* --- Columna Derecha: Contenido del Menú --- */
 .menu__content {
     display: flex;
-    flex-direction: column; /* Para apilar la nav y la lista de items */
+    flex-direction: column;
     width: 50%;
     height: 95%;
     padding: 20px 30px 20px 20px;
     margin-right: 15px;
 }
 
-/* Navegación / Filtros */
 .menu__content__nav {
-    flex-shrink: 0; /* Evita que la nav se encoja */
+    flex-shrink: 0;
     margin-bottom: 20px;
     border-bottom: 1px solid #333;
 }
@@ -78,21 +73,19 @@ menu-page {
 }
 
 .menu__content__nav__item--active {
-    color: #EFE7D2; /* Color para el filtro activo */
+    color: #EFE7D2;
     border-bottom: 2px solid #EFE7D2;
     padding-bottom: 8px;
     margin-bottom: -10px;
 }
 
 
-/* Contenedor de la lista para activar el scroll */
 .menu__content__items-container {
-    flex-grow: 1; /* Permite que este div ocupe todo el espacio vertical restante */
-    overflow-y: auto; /* ¡LA CLAVE! Muestra la barra de scroll solo cuando es necesario */
-    padding-right: 15px; /* Espacio para que el scroll no se pegue al contenido */
+    flex-grow: 1;
+    overflow-y: auto; 
+    padding-right: 15px; 
 }
 
-/* Ocultar scrollbar estándar y aplicar uno personalizado (opcional, para estética) */
 .menu__content__items-container::-webkit-scrollbar {
     width: 8px;
 }
@@ -104,7 +97,6 @@ menu-page {
     border-radius: 20px;
 }
 
-/* Categorías y Items del Menú */
 .menu__content__category {
     margin-bottom: 30px;
 }
