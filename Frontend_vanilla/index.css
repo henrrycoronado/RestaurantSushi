@@ -2,7 +2,14 @@
 @import url('./src/blocks/modal/modal.css');
 @import url('./src/blocks/home/home.css');
 @import url('./src/blocks/menu/menu.css');
+@import url('./src/blocks/about/about.css');
+@import url('./src/blocks/contact/contact.css');
+@import url('./src/blocks/blog/blog.css');
 @import url('./src/blocks/reservation/reservation.css');
+@import url('./src/blocks/cart/cart.css');
+@import url('./src/blocks/article/article.css');
+@import url('./src/blocks/registration/registration.css');
+@import url('./src/blocks/login/login.css');
 @import url('./src/blocks/notFound/notFound.css');
 @import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 

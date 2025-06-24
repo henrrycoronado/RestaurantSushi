@@ -45,18 +45,19 @@ about-page {
 .about__content {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 50%;
     height: 95%;
-    padding: 40px 30px;
-    margin-right: 15px;
-    gap: 40px; 
-    overflow-y: auto;
+    margin: 0 15px;
 }
 
 .about__artistry,
 .about__story {
     display: flex;
     align-items: center;
+    width: 100%;
+    height: 40%;
     gap: 25px;
 }
 
@@ -81,25 +82,27 @@ about-page {
 }
 
 .about__artistry__img {
-    width: 180px;
-    height: 120px;
     object-fit: cover;
     border-radius: 8px;
     flex-shrink: 0;
+    width: 300px;
+    height: auto;
 }
 
 .about__story__img {
-    width: 200px;
-    height: 150px;
     object-fit: cover;
     border-radius: 8px;
     flex-shrink: 0;
+    width: 300px;
+    height: auto;
 }
 
 .about__accolades {
     display: flex;
     gap: 15px;
     justify-content: space-between;
+    width: 100%;
+    height: max-content;
 }
 
 .accolade-card {

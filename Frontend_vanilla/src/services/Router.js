@@ -48,6 +48,24 @@ export const Router = {
             case "/about":
                 pageElement = document.createElement("about-page");
                 break;
+            case "/contact":
+                pageElement = document.createElement("contact-page");
+                break;
+            case "/blog":
+                pageElement = document.createElement("blog-page");
+                break;
+            case "/article":
+                pageElement = document.createElement("article-page");
+                break;
+            case "/cart":
+                pageElement = document.createElement("cart-page");
+                break;
+            case "/signup":
+                pageElement = document.createElement("registration-page");
+                break;
+            case "/signin":
+                pageElement = document.createElement("login-page");
+                break;
             default:
                 pageElement = document.createElement("notfound-page");
                 break;

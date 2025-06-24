@@ -1,0 +1,154 @@
+article-page {
+    width: 100%;
+    height: 100%;
+}
+
+.article {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+}
+
+/* --- Columna Izquierda: Presentación --- */
+.article__presentation {
+    width: 50%;
+    height: 95%;
+    padding-left: 15px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.article__presentation__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+/* --- Columna Derecha: Contenido --- */
+.article__content {
+    display: flex; /* Para que el scroll-container pueda crecer */
+    flex-direction: column;
+    width: 50%;
+    height: 95%;
+    padding: 20px 15px 20px 20px;
+    margin-right: 15px;
+}
+
+.article__scroll-container {
+    flex-grow: 1; /* Permite que este contenedor ocupe el espacio disponible */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    padding-right: 15px;
+}
+
+/* Estilos para la barra de scroll */
+.article__scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+.article__scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.article__scroll-container::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 20px;
+}
+
+/* Estilos del contenido */
+.article__header {
+    margin-bottom: 30px;
+}
+
+.article__header__date {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.article__header__title {
+    font-size: 42px;
+    color: #EFE7D2;
+    margin-top: 10px;
+    line-height: 1.2;
+}
+
+.article__section {
+    margin-bottom: 35px;
+}
+
+.article__section__title {
+    font-size: 16px;
+    color: #EFE7D2;
+    margin-bottom: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.article__section__text {
+    font-size: 15px;
+    color: #999;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.article__footer {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #333;
+}
+
+.article__comment-form {
+    display: flex;
+    border: 1px solid #444;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.article__comment-form__input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    padding: 15px;
+    color: #EFE7D2;
+    font-size: 14px;
+}
+
+.article__comment-form__input:focus {
+    outline: none;
+}
+
+.article__comment-form__button {
+    background-color: #EFE7D2;
+    color: #1C1C1C;
+    border: none;
+    padding: 0 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.article__comment-form__button:hover {
+    background-color: #c7bfab;
+}
+
+
+.article__pagination {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5px;
+}
+
+.article__pagination__link {
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.article__pagination__link:hover {
+    color: #EFE7D2;
+}
