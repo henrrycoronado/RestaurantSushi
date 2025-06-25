@@ -82,57 +82,6 @@
                     </nav>
 
                     <div class="menu__content__items-container">
-                        <div class="menu__content__category">
-                            <h2 class="menu__content__category__title">MAKI</h2>
-                            <div class="menu__item">
-                                <img class="menu__item__img" src="/src/assets/maki-spicy-tuna.png" alt="Spicy Tuna Maki">
-                                <div class="menu__item__details">
-                                    <h3 class="menu__item__title">SPICY TUNA MAKI</h3>
-                                    <p class="menu__item__description">A tantalizing blend of spicy tuna, cucumber, and avocado, harmoniously rolled in nori and seasoned rice.</p>
-                                </div>
-                                <span class="menu__item__price">$5</span>
-                            </div>
-                            <div class="menu__item">
-                                <img class="menu__item__img" src="/src/assets/maki-mango.png" alt="Mango Maki">
-                                <div class="menu__item__details">
-                                    <h3 class="menu__item__title">MANGO MAKI</h3>
-                                    <p class="menu__item__description">Wrapped mango strips, cucumber, and cream cheese to create a contrast of fresh avocado delivering a satisfying sortment of textures.</p>
-                                </div>
-                                <span class="menu__item__price">$5</span>
-                            </div>
-                            </div>
-
-                        <div class="menu__content__category">
-                            <h2 class="menu__content__category__title">URAMAKI</h2>
-                            <div class="menu__item">
-                                <img class="menu__item__img" src="/src/assets/uramaki-volcano.png" alt="Volcano Delight">
-                                <div class="menu__item__details">
-                                    <h3 class="menu__item__title">VOLCANO DELIGHT</h3>
-                                    <p class="menu__item__description">Creamy crab salad, avocado, and cucumber rolled inside, topped with spicy tuna and drizzled with fiery volcano sauce.</p>
-                                </div>
-                                <span class="menu__item__price">$12</span>
-                            </div>
-                            </div>
-
-                         <div class="menu__content__category">
-                            <h2 class="menu__content__category__title">SPECIAL ROLLS</h2>
-                            <div class="menu__item">
-                                <img class="menu__item__img" src="/src/assets/maki-spicy-tuna.png" alt="Special Roll">
-                                <div class="menu__item__details">
-                                    <h3 class="menu__item__title">DRAGON ROLL</h3>
-                                    <p class="menu__item__description">Classic roll with eel and cucumber, topped with avocado slices resembling dragon scales.</p>
-                                </div>
-                                <span class="menu__item__price">$14</span>
-                            </div>
-                             <div class="menu__item">
-                                <img class="menu__item__img" src="/src/assets/maki-mango.png" alt="Special Roll 2">
-                                <div class="menu__item__details">
-                                    <h3 class="menu__item__title">RAINBOW ROLL</h3>
-                                    <p class="menu__item__description">Crab, avocado, and cucumber roll topped with a vibrant assortment of fresh fish like tuna, salmon, and yellowtail.</p>
-                                </div>
-                                <span class="menu__item__price">$15</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -176,38 +125,14 @@
                 remarkable dining experience await.
             </p>
 
-            <div class="reservation__form">
-                <div class="reservation__form__inputs">
-                    <div class="reservation__form__input-group">
-                        <span class="reservation__form__label">Guests</span>
-                        <div class="reservation__form__input"></div>
-                    </div>
-                    <div class="reservation__form__input-group">
-                        <span class="reservation__form__label">Date</span>
-                        <div class="reservation__form__input"></div>
-                    </div>
-                    <div class="reservation__form__input-group">
-                        <span class="reservation__form__label">Time</span>
-                        <div class="reservation__form__input"></div>
-                    </div>
-                </div>
-                <button class="reservation__form__button">RESERVE</button>
-            </div>
+            <div id="form-container"></div>
 
-            <div class="reservation__pending">
-                <h3 class="reservation__pending__title">Pending reservations</h3>
+            <p class="form-feedback"></p>
+
+            <div class="reservation__pending" style="display: none;">
+                <h3 class="reservation__pending__title">Your Reservations</h3>
                 <div class="reservation__pending__list">
-                    <div class="reservation-item">
-                        <div class="reservation-item__left">
-                            <span class="reservation-item__name">Jean daniel</span>
-                            <span class="reservation-item__seats">3 seats</span>
-                        </div>
-                        <div class="reservation-item__right">
-                            <span class="reservation-item__time">17:00</span>
-                            <span class="reservation-item__date">June 23, 2025</span>
-                        </div>
-                    </div>
-                     </div>
+                </div>
             </div>
         </div>
     </div>
@@ -459,47 +384,13 @@
                 <h1 class="cart__presentation__text__title">CART</h1>
             </div>
         </div>
-
         <div class="cart__content">
             <h2 class="cart__title">MY CART</h2>
-            
             <div class="cart__items-container">
-                <div class="cart__item">
-                    <img class="cart__item__img" src="/src/assets/maki-spicy-tuna.png" alt="Spicy Tuna Maki">
-                    <div class="cart__item__details">
-                        <div class="cart__item__header">
-                            <h3 class="cart__item__name">SPICY TUNA MAKI</h3>
-                            <button class="cart__item__remove" title="Remove item">&#128465;</button>
-                        </div>
-                        <p class="cart__item__description">A tantalizing blend of spicy tuna, cucumber, and avocado, harmoniously rolled in nori and seasoned rice.</p>
-                    </div>
-                    <div class="cart__item__pricing">
-                        <span class="cart__item__price-calc">$5 X 10 = $50</span>
-                    </div>
                 </div>
-
-                <div class="cart__item">
-                    <img class="cart__item__img" src="/src/assets/maki-mango.png" alt="Mango Maki">
-                    <div class="cart__item__details">
-                        <div class="cart__item__header">
-                             <h3 class="cart__item__name">MANGO MAKI</h3>
-                             <button class="cart__item__remove" title="Remove item">&#128465;</button>
-                        </div>
-                        <p class="cart__item__description">Tempura-fried shrimp, cucumber, and cream cheese embrace a center of fresh avocado, delivering a satisfying sortment of textures.</p>
-                    </div>
-                    <div class="cart__item__pricing">
-                        <span class="cart__item__price-calc">$5 X 5 = $25</span>
-                    </div>
-                </div>
-            </div>
-
             <div class="cart__summary">
-                <div class="cart__total">
-                    <span class="cart__total__label">TOTAL</span>
-                    <span class="cart__total__amount">$75</span>
                 </div>
-                <button class="cart__order-button">PLACE ORDER</button>
-            </div>
+            <p class="form-feedback"></p>
         </div>
     </div>
     </template>
@@ -512,38 +403,32 @@
                 <h1 class="registration__presentation__text__title">REGISTRATION</h1>
             </div>
         </div>
-
         <div class="registration__content">
             <div class="registration__form-container">
-                <h2 class="registration__title">REGISTRATION</h2>
+                <h2 class="registration__title">CREATE ACCOUNT</h2>
                 <form class="registration__form">
                     <div class="registration__form-group">
-                        <label for="reg-name" class="registration__label">Name</label>
-                        <input type="text" id="reg-name" class="registration__input">
+                        <input type="text" id="reg-name" class="registration__input" placeholder="Name" required>
                     </div>
                     <div class="registration__form-group">
-                        <label for="reg-phone" class="registration__label">Phone number</label>
-                        <input type="tel" id="reg-phone" class="registration__input">
+                        <input type="email" id="reg-email" class="registration__input" placeholder="E-mail" required>
                     </div>
                     <div class="registration__form-group">
-                        <label for="reg-email" class="registration__label">E-mail</label>
-                        <input type="email" id="reg-email" class="registration__input">
+                        <input type="tel" id="reg-phone" class="registration__input" placeholder="Phone Number" required>
                     </div>
                     <div class="registration__form-group">
-                        <label for="reg-password" class="registration__label">Password</label>
-                        <input type="password" id="reg-password" class="registration__input">
+                        <input type="text" id="reg-address" class="registration__input" placeholder="Address" required>
                     </div>
                     <div class="registration__form-group">
-                        <label for="reg-confirm-password" class="registration__label">Password</label>
-                        <input type="password" id="reg-confirm-password" class="registration__input">
+                        <input type="password" id="reg-password" class="registration__input" placeholder="Password" required>
                     </div>
-                     <div class="registration__form-group">
-                        <label for="reg-address" class="registration__label">Address</label>
-                        <input type="text" id="reg-address" class="registration__input">
+                    <div class="registration__form-group">
+                        <input type="password" id="reg-confirm-password" class="registration__input" placeholder="Confirm Password" required>
                     </div>
+                    <p class="form-error-message"></p>
                     <button type="submit" class="registration__submit-button">REGISTER</button>
                 </form>
-                <a href="/signin" class="registration__alternative-link">Go to Login</a>
+                <a href="/signin" class="registration__alternative-link">Already have an account? Go to Login</a>
             </div>
         </div>
     </div>
@@ -568,7 +453,7 @@
                     <div class="login__form-group">
                         <input type="password" id="login-password" class="login__input" placeholder="Password">
                     </div>
-                    <label class="login__label">Mensaje</label>
+                    <p class="form-error-message"></p>
                     <button type="submit" class="login__submit-button">LOGIN</button>
                 </form>
                 <a href="/signup" class="login__alternative-link">Go to registration instead</a>

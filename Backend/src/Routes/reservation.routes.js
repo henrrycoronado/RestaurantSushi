@@ -11,7 +11,7 @@ import {
 const reservationRoutes = Router();
 
 reservationRoutes.post('/', validate(createReservationSchema), reservationController.create);
-
+reservationRoutes.get('/history', protect, reservationController.getHistoryByContact);
 
 reservationRoutes.get('/', protect, adminOnly, reservationController.getAll);
 reservationRoutes.patch('/:id/state', protect, adminOnly, validate(reservationIdSchema.merge(updateReservationStateSchema)), reservationController.updateState);

@@ -28,3 +28,12 @@ export const deleteReservation = async (id) => {
     where: { id },
   });
 };
+
+export const getReservationsByEmail = async (email) => {
+  return await prisma.reservations.findMany({
+    where: { email: email },
+    orderBy: {
+      date: 'desc'
+    }
+  });
+};

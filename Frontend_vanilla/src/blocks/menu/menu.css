@@ -53,8 +53,10 @@ menu-page {
 
 .menu__content__nav {
     flex-shrink: 0;
-    margin-bottom: 20px;
+    margin-top: 20px;
     border-bottom: 1px solid #333;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu__content__nav__list {
@@ -145,4 +147,32 @@ menu-page {
     font-size: 18px;
     font-weight: bold;
     color: #EFE7D2;
+}
+
+.menu__item {
+    position: relative; 
+    padding-bottom: 30px; 
+}
+
+.add-to-cart-btn {
+    position: absolute;
+    bottom: 10px; 
+    left: 10px; 
+    width: 30px;
+    height: 30px;
+    background-color: #EFE7D2;
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 28px; 
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #d1c6a7;
+    transform: scale(1.1);
 }

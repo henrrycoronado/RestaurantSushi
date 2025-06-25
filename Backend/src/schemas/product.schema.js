@@ -10,7 +10,6 @@ export const createProductSchema = z.object({
       toNumber,
       z.number({ required_error: 'El precio es requerido' }).positive('El precio debe ser un número positivo')
     ),
-    url_image: z.string().url({ message: 'La URL de la imagen no es válida' }).optional(),
     category_id: z.number({ required_error: 'El ID de la categoría es requerido' }).int().positive(),
   }),
 });

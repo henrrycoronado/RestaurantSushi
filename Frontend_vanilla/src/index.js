@@ -1,7 +1,6 @@
 import { Router } from "./services/Router.js";
-import { ItemList } from "./services/ItemList.js";
-import { CommandExecutor, Command, Commands } from "./services/Command.js";
-import { LocalStorage } from "./services/Storage.js";
+import { APIService } from './services/APIService.js';
+import { Store } from './services/Store.js';
 
 import { Home } from "./blocks/home/home.js";
 import { Menu } from "./blocks/menu/menu.js";
@@ -19,16 +18,11 @@ import { Modal } from "./blocks/modal/modal.js";
 
 globalThis.app = {};
 app.router = Router;
+app.store = Store;
 
 window.addEventListener("DOMContentLoaded", () => {
+    app.store.init();
     app.router.init();
-    document.addEventListener("keydown", function (event) {
-        if (event.ctrlKey && event.key === "k") {
-            event.preventDefault();
-            const cmd = new Command(Commands.FOCUS);
-            CommandExecutor.execute(cmd);
-        }
-    });
 });
 
 

@@ -63,8 +63,9 @@ cart-page {
 }
 
 .cart__items-container {
-    flex-grow: 1; /* Ocupa el espacio disponible */
+    flex-grow: 1;
     border-top: 1px solid #333;
+    overflow-y: auto;
 }
 
 .cart__item {
@@ -130,7 +131,7 @@ cart-page {
 }
 
 .cart__summary {
-    flex-shrink: 0; /* Evita que esta sección se encoja */
+    flex-shrink: 0; 
     padding-top: 25px;
 }
 
@@ -176,7 +177,7 @@ cart-page {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: auto; /* Empuja el footer hacia abajo */
+    margin-top: auto;
     padding-top: 20px;
 }
 

@@ -3,7 +3,7 @@ import { hashPassword, comparePassword } from '../utils/hash.utils.js';
 import { generateToken } from '../utils/token.utils.js';
 
 export const register = async (req, res) => {
-    const { name, email, password, rol } = req.body;
+    const { name, email, phone_number, address,  password, rol } = req.body;
     try {
         const existingUser = await UserService.getUserByEmail(email);
         if (existingUser) {
@@ -13,6 +13,8 @@ export const register = async (req, res) => {
         const user = await UserService.createUser({
             name,
             email,
+            phone_number,
+            address,
             password: hashedPassword,
             rol,
         });
@@ -38,6 +40,8 @@ export const login = async (req, res) => {
             id: user.id,
             name: user.name,
             email: user.email,
+            phone_number: user.phone_number,
+            address: user.address,
             rol: user.rol,
         };
         res.status(200).json({

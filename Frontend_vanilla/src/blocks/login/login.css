@@ -12,7 +12,7 @@ login-page {
     gap: 10px;
 }
 
-/* --- Columna Izquierda: Presentación --- */
+
 .login__presentation {
     position: relative;
     display: flex;
@@ -43,7 +43,6 @@ login-page {
     color: #EFE7D2;
 }
 
-/* --- Columna Derecha: Contenido --- */
 .login__content {
     display: flex;
     flex-direction: column;
@@ -151,4 +150,16 @@ login-page {
     font-size: 12px;
     color: #888;
     text-decoration: none;
+}
+
+.form-error-message {
+  color: #ff8a8a;
+  font-size: 13px;
+  text-align: center;
+  margin: -10px 0 10px 0;
+  display: none;
+}
+
+.form-error-message.visible {
+  display: block;
 }
