@@ -12,7 +12,6 @@ article-page {
     gap: 10px;
 }
 
-/* --- Columna Izquierda: Presentación --- */
 .article__presentation {
     width: 50%;
     height: 95%;
@@ -28,9 +27,8 @@ article-page {
     filter: brightness(0.7);
 }
 
-/* --- Columna Derecha: Contenido --- */
 .article__content {
-    display: flex; /* Para que el scroll-container pueda crecer */
+    display: flex;
     flex-direction: column;
     width: 50%;
     height: 95%;
@@ -139,3 +137,92 @@ article-page {
     background-color: #c7bfab;
 }
 
+.article__form {
+    padding: 10px 20px 20px 0;
+}
+
+.article__form__title {
+    color: #EFE7D2;
+    margin-bottom: 30px;
+    font-size: 36px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.article__form-group {
+    margin-bottom: 25px;
+}
+
+.article__form-label {
+    display: block;
+    color: #888;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.article__form-input,
+.article__form-textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 5px;
+    color: #EFE7D2;
+    font-size: 16px;
+    box-sizing: border-box; 
+    font-family: inherit;
+}
+
+.article__form-textarea {
+    resize: vertical; 
+    min-height: 200px;
+}
+
+.article__form-input:focus,
+.article__form-textarea:focus {
+    outline: none;
+    border-color: #EFE7D2;
+}
+
+
+.article__footer {
+    display: flex;
+    justify-content: flex-end; 
+    gap: 15px;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #333;
+}
+
+.article__button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.article__button:active {
+    transform: scale(0.98);
+}
+
+.article__button--submit,
+.article__button--edit {
+    background-color: #EFE7D2;
+    color: #1C1C1C;
+}
+.article__button--submit:hover,
+.article__button--edit:hover {
+    background-color: #c7bfab;
+}
+
+.article__button--delete {
+    background-color: #8B0000; 
+    color: #EFE7D2;
+}
+
+.article__button--delete:hover {
+    background-color: #b80000;
+}

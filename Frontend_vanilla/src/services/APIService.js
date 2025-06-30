@@ -59,4 +59,39 @@ export const APIService = {
             body: JSON.stringify({ details: orderDetails }),
         });
     },
+    getPublications: async () => await fetchApi('/publications'),
+    
+    getPublicationById: async (id) => await fetchApi(`/publications/${parseInt(id)}`),
+
+    createPublication: async (publicationData) => {
+        return await fetchApi('/publications', {
+            method: 'POST',
+            body: JSON.stringify(publicationData),
+        });
+    },
+
+    updatePublication: async (id, publicationData) => {
+        return await fetchApi(`/publications/${parseInt(id)}`, {
+            method: 'PUT',
+            body: JSON.stringify(publicationData),
+        });
+    },
+
+    deletePublication: async (id) => {
+        return await fetchApi(`/publications/${parseInt(id)}`, {
+            method: 'DELETE',
+        });
+    },
+
+    likePublication: async (publicationId) => {
+        return await fetchApi(`/publications/${parseInt(publicationId)}/like`, {
+            method: 'POST',
+        });
+    },
+
+    unlikePublication: async (publicationId) => {
+        return await fetchApi(`/publications/${parseInt(publicationId)}/like`, {
+            method: 'DELETE',
+        });
+    }
 };

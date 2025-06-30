@@ -40,41 +40,41 @@ export const Router = {
         await Router.animation(main);
         let pageElement = null;
         let targetNavbarWidth = "50%";
-        switch (route) {
-            case "/":
-                pageElement = document.createElement("home-page");
-                targetNavbarWidth = "80%";
-                break;
-            case "/menu":
-                pageElement = document.createElement("menu-page");
-                break;
-            case "/reservation":
-                pageElement = document.createElement("reservation-page");
-                break;
-            case "/about":
-                pageElement = document.createElement("about-page");
-                break;
-            case "/contact":
-                pageElement = document.createElement("contact-page");
-                break;
-            case "/blog":
-                pageElement = document.createElement("blog-page");
-                break;
-            case "/article":
-                pageElement = document.createElement("article-page");
-                break;
-            case "/cart":
-                pageElement = document.createElement("cart-page");
-                break;
-            case "/signup":
-                pageElement = document.createElement("registration-page");
-                break;
-            case "/signin":
-                pageElement = document.createElement("login-page");
-                break;
-            default:
-                pageElement = document.createElement("notfound-page");
-                break;
+        if (route === "/") {
+            pageElement = document.createElement("home-page");
+            targetNavbarWidth = "80%";
+        } else if (route.startsWith("/article-") || route === "/blogCreate" || route.startsWith("/blogEdit-")) {
+            pageElement = document.createElement("article-page");
+        } else {
+            switch (route) {
+                case "/menu":
+                    pageElement = document.createElement("menu-page");
+                    break;
+                case "/reservation":
+                    pageElement = document.createElement("reservation-page");
+                    break;
+                case "/about":
+                    pageElement = document.createElement("about-page");
+                    break;
+                case "/contact":
+                    pageElement = document.createElement("contact-page");
+                    break;
+                case "/blog":
+                    pageElement = document.createElement("blog-page");
+                    break;
+                case "/cart":
+                    pageElement = document.createElement("cart-page");
+                    break;
+                case "/signup":
+                    pageElement = document.createElement("registration-page");
+                    break;
+                case "/signin":
+                    pageElement = document.createElement("login-page");
+                    break;
+                default:
+                    pageElement = document.createElement("notfound-page");
+                    break;
+            }
         }
         const navbar = document.getElementsByTagName("navbar-comp")[0];
         if (navbar && navbar.style.width !== targetNavbarWidth) {

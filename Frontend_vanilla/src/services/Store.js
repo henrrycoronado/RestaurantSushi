@@ -6,8 +6,8 @@ const storeData = {
     products: [],
     categories: [],
     cart: [],
-    blogs: [],
-    myBlogs: [],
+    publications: [], 
+    likedPublicationIds: new Set(),
 
     init() {
         const token = localStorage.getItem('authToken');
@@ -64,6 +64,29 @@ const storeData = {
 
     getCartItemCount() {
         return this.cart.reduce((total, item) => total + item.quantity, 0);
+    },
+    setPublications(publications) {
+        this.publications = publications;
+        this.notify();
+    },
+
+    async toggleLike(publicationId) {
+        if (!this.user) {
+            alert("Debes iniciar sesión para dar like.");
+            return;
+        }
+        try {
+            if (this.likedPublicationIds.has(publicationId)) {
+                await APIService.unlikePublication(publicationId);
+                this.likedPublicationIds.delete(publicationId);
+            } else {
+                await APIService.likePublication(publicationId);
+                this.likedPublicationIds.add(publicationId);
+            }
+            this.notify();
+        } catch (error) {
+            console.error("Error al dar/quitar like:", error);
+        }
     }
 };
 Object.assign(storeData, observerMixim);

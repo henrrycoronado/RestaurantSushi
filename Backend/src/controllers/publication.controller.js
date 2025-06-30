@@ -13,7 +13,7 @@ export const getAll = async (req, res) => {
 
 export const getById = async (req, res) => {
     try {
-        const publication = await PublicationService.getPublicationById(req.params.id);
+        const publication = await PublicationService.getPublicationById(parseInt(req.params.id));
         if (!publication) {
             return res.status(404).json({ message: 'Publicación no encontrada' });
         }
@@ -36,7 +36,7 @@ export const create = async (req, res) => {
 
 export const update = async (req, res) => {
     try {
-        const publicationId = req.params.id;
+        const publicationId = parseInt(req.params.id);
         const userId = req.user.id;
         const dataToUpdate = req.body;
 
@@ -57,7 +57,7 @@ export const update = async (req, res) => {
 
 export const remove = async (req, res) => {
     try {
-        const publicationId = req.params.id;
+        const publicationId = parseInt(req.params.id);
         const userId = req.user.id;
 
         const publication = await PublicationService.getPublicationById(publicationId);
@@ -79,7 +79,7 @@ export const like = async (req, res) => {
     try {
         const userId = req.user.id;
         const { publicationId } = req.params;
-        await LikeService.likePublication(userId, publicationId);
+        await LikeService.likePublication(userId, parseInt(publicationId));
         res.status(201).json({ message: 'Like añadido con éxito' });
     } catch (error) {
         if (error.code === 'P2002') {
@@ -93,7 +93,7 @@ export const unlike = async (req, res) => {
     try {
         const userId = req.user.id;
         const { publicationId } = req.params;
-        await LikeService.unlikePublication(userId, publicationId);
+        await LikeService.unlikePublication(userId,parseInt(publicationId));
         res.status(204).send();
     } catch (error) {
         if (error.code === 'P2025') {

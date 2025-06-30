@@ -288,89 +288,45 @@
         <div class="blog__content">
             <div class="blog__header">
                 <h2 class="blog__header__title">BEHIND THE SCENES<br>& LATEST NEWS</h2>
-            </div>
+                </div>
 
             <nav class="blog__content__nav">
-                <ul class="blog__content__nav__list">
-                    <li class="blog__content__nav__item blog__content__nav__item--active"><a>ALL NEWS</a></li>
-                    <li class="blog__content__nav__item"><a>FAVORITES</a></li>
-                    <li class="blog__content__nav__item"><a>MY ARTICLES</a></li>
-                </ul>
+                <ul class="blog__content__nav__list"></ul>
             </nav>
 
-            <div class="blog__articles-container">
-                <div class="blog__article">
-                    <img class="blog__article__img" src="/src/assets/article-1.png" alt="Corte de salmón">
-                    <div class="blog__article__details">
-                        <span class="blog__article__date">24TH AUG 2023</span>
-                        <h3 class="blog__article__title">HOW QITCHEN REDEFINES FLAVOR HARMONY IN EVERY BITE</h3>
-                        <p class="blog__article__excerpt">Experience an orchestra of tastes as Qitchen's sushi unveils a symphony of perfectly balanced flavors.</p>
-                        <span class="blog__article__author">Author: Name</span>
-                    </div>
-                </div>
-
-                <div class="blog__article">
-                    <img class="blog__article__img" src="/src/assets/article-2.png" alt="Mano sosteniendo un celular fotografiando sushi">
-                    <div class="blog__article__details">
-                        <span class="blog__article__date">24TH AUG 2023</span>
-                        <h3 class="blog__article__title">UNVEILING THE MASTERY BEHIND OUR CULINARY CRAFTSMANSHIP</h3>
-                        <p class="blog__article__excerpt">Explore the meticulous artistry and dedication that create Qitchen's renowned sushi perfection.</p>
-                        <span class="blog__article__author">Author: Name</span>
-                    </div>
-                </div>
-
-                <div class="blog__article">
-                    <img class="blog__article__img" src="/src/assets/article-3.png" alt="Ingredientes frescos de sushi">
-                    <div class="blog__article__details">
-                        <span class="blog__article__date">24TH AUG 2023</span>
-                        <h3 class="blog__article__title">JOURNEY THROUGH FRESHNESS: EXQUISITE SUSHI SELECTION</h3>
-                        <p class="blog__article__excerpt">Embark on a seafood adventure, guided by Qitchen's fresh and exquisite sushi creations from the sea.</p>
-                        <span class="blog__article__author">Author: Name</span>
-                    </div>
-                </div>
-            </div>
+            <div class="blog__articles-container"></div>
         </div>
     </div>
     </template>
     <template id="article-page_template">
     <link rel="stylesheet" href="./src/blocks/article/article.css">
+    <link rel="stylesheet" href="./src/blocks/article/article-form.css"> 
+
     <div class="article">
         <div class="article__presentation">
-            <img class="article__presentation__img" src="/src/assets/article_fondo.png" alt="Manos cortando salmón fresco">
+            <img class="article__presentation__img" src="" alt="">
         </div>
-
         <div class="article__content">
             <div class="article__scroll-container">
-                <header class="article__header">
-                    <span class="article__header__date">24TH AUG 2023</span>
-                    <h1 class="article__header__title">HOW QITCHEN REDEFINES FLAVOR HARMONY IN EVERY BITE</h1>
-                </header>
-
-                <main class="article__body">
-                    <section class="article__section">
-                        <h2 class="article__section__title">UNVEILING CULINARY ARTISTRY: A JOURNEY INTO QITCHENS SOUL</h2>
-                        <p class="article__section__text">The entire team invites you to an exploration of flavors that delve deep into the richness of Qitchen's creative concept and commitment to excellence. On this flavorful journey, you'll discover our philosophy of culinary arts, a path laid out for the art of gastronomy. As you step through its doors, you're not merely entering an eatery; you're immersing yourself in an experience that goes beyond the boundaries of a traditional dining encounter.</p>
-                    </section>
-
-                    <section class="article__section">
-                        <h2 class="article__section__title">CRAFTING A FEAST FOR THE SENSES</h2>
-                        <p class="article__section__text">The heart of Qitchen's allure lies in the meticulous attention to every detail, from the selection of ingredients to the presentation of each dish. While renowned for its exceptional sushi, Qitchen's passion for perfection extends to every facet of the journey. The talented chefs create a symphony of flavors, seamlessly blending textures, colors, and aromas to create a celebratory masterpiece.</p>
-                        <p class="article__section__text">The ambiance itself also speaks of a calm, serene modern Japanese style, warmth, and tranquility in its details. It’s not just about the dish; the service makes that sure you enjoy it. Each plate that graces the table is not just a meal; it's a fully fledged tale – a testament to the fact that Qitchen's gastronomy has traveled through to a new experience that can be shared with close companions and food-loving connoisseurs.</p>
-                    </section>
-
-                    <section class="article__section">
-                        <h2 class="article__section__title">BEYOND SUSHI: NURTURING CONNECTIONS</h2>
-                        <p class="article__section__text">While the gastronomic delights are undoubtedly the centerpiece, Qitchen goes beyond being a culinary hotspot; it is a space that fosters connections and weaves precious memories. Qitchen’s gastronomy is, in this sense, an experience for loved ones to share. The culinary experience at Qitchen's is more than tasting, it's an act of bonding – a chance to share joy, laughter, and stories over a beautifully laid table.</p>
-                        <p class="article__section__text">The Qitchen experience transcends the physical walls of the restaurant; it’s an invitation to step out of the ordinary and into a realm where passion for food as an art form and every guest is a cherished character. Through its symphony of flavors, the artistry of presentation, and the warm, convivial ambiance, Qitchen invites you to witness passion personified in every aspect of your dining journey.</p>
-                    </section>
-                </main>
-
-                <footer class="article__footer">
-                    <div class="article__comment-form">
-                        <p class="article__comment-form__autor">Author: Name</p>
-                        <button class="article__comment-form__button">SAVE</button>
+                <div class="article__read-mode">
+                    <header class="article__header">
+                        <span class="article__header__date"></span>
+                        <h1 class="article__header__title"></h1>
+                    </header>
+                    <main class="article__body"></main>
+                </div>
+                <form class="article__form" style="display: none;">
+                    <h1 class="article__form__title"></h1>
+                    <div class="article__form-group">
+                        <label for="title" class="article__form-label">Título</label>
+                        <input type="text" id="title" class="article__form-input" required>
                     </div>
-                </footer>
+                    <div class="article__form-group">
+                        <label for="content" class="article__form-label">Contenido</label>
+                        <textarea id="content" class="article__form-textarea" rows="15" required></textarea>
+                    </div>
+                </form>
+                <footer class="article__footer"></footer>
             </div>
         </div>
     </div>
