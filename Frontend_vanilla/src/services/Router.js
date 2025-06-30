@@ -2,26 +2,21 @@ export const Router = {
     navigate: false, 
     init: () => {
         document.addEventListener("click", event => {
-        const link = event.target.closest('a');
-        if (link && !Router.navigate) {
-            const href = link.getAttribute("href");
-            if (href && href.startsWith("/")) {
-                event.preventDefault();
-                Router.go(href);
+            const link = event.target.closest('a');
+            if (link) {
+                const href = link.getAttribute("href");
+                if (href && href.startsWith("/")) {
+                    event.preventDefault();
+                    Router.go(href);
+                }
             }
-        }
-    });
+        });
         window.addEventListener("popstate", () => {
             Router.go(location.pathname, false);
         });
         Router.go(location.pathname, false);
     },
-    go: async (route, addToHistory = true) => {
-        Router.navigate = true;
-        if (addToHistory) {
-            history.pushState({ route }, '', route);
-        }
-        const main = document.getElementById("main");
+    animation: async (main) => {
         const currentPage = main.firstElementChild;
         const animationDuration = 400;
         if (currentPage) {
@@ -32,6 +27,17 @@ export const Router = {
         if (currentPage) {
             currentPage.remove();
         }
+    },
+    go: async (route, addToHistory = true) => {
+        if(Router.navigate){
+            return;
+        }
+        Router.navigate = true;
+        if (addToHistory) {
+            history.pushState({ route }, '', route);
+        }
+        const main = document.getElementById("main");
+        await Router.animation(main);
         let pageElement = null;
         let targetNavbarWidth = "50%";
         switch (route) {

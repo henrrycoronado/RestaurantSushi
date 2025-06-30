@@ -6,6 +6,8 @@ const storeData = {
     products: [],
     categories: [],
     cart: [],
+    blogs: [],
+    myBlogs: [],
 
     init() {
         const token = localStorage.getItem('authToken');
@@ -15,7 +17,6 @@ const storeData = {
             this.user = JSON.parse(userData);
         }
     },
-
     login(userData, token) {
         this.user = userData;
         this.token = token;
@@ -23,7 +24,6 @@ const storeData = {
         localStorage.setItem('userData', JSON.stringify(userData));
         this.notify();
     },
-
     logout() {
         this.user = null;
         this.token = null;
@@ -66,10 +66,5 @@ const storeData = {
         return this.cart.reduce((total, item) => total + item.quantity, 0);
     }
 };
-
 Object.assign(storeData, observerMixim);
-
 export const Store = storeData;
-
-globalThis.app = globalThis.app || {};
-globalThis.app.store = Store;

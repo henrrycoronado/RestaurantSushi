@@ -9,9 +9,13 @@ export class Menu extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
         
-        this.activeFilter = 'ALL'; 
+        this.activeFilter = 'All'; 
         this.render = this.render.bind(this);
         Store.addObserver(this.render);
+    }
+    capitalize(string) {
+        if (!string) return '';
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();  
     }
 
     async connectedCallback() {
@@ -40,15 +44,12 @@ export class Menu extends HTMLElement {
             }
         });
 
-        // AÑADIDO: Event Listener para los botones "Añadir al Carrito"
         const itemsContainer = this.shadowRoot.querySelector(".menu__content__items-container");
         itemsContainer.addEventListener("click", event => {
-            // Usamos event delegation para capturar clics en los botones '+'
             const addButton = event.target.closest('.add-to-cart-btn');
             if (addButton) {
                 const productId = parseInt(addButton.dataset.productId);
                 Store.addToCart(productId);
-                // Opcional: Mostrar una pequeña animación o feedback
                 addButton.style.transform = 'scale(1.2)';
                 setTimeout(() => addButton.style.transform = 'scale(1)', 150);
             }
@@ -60,39 +61,34 @@ export class Menu extends HTMLElement {
     }
     
     render() {
-        // ... (la lógica de renderizado de la navegación no cambia) ...
         const navList = this.shadowRoot.querySelector(".menu__content__nav__list");
         const itemsContainer = this.shadowRoot.querySelector(".menu__content__items-container");
         
         if (!navList || !itemsContainer) return;
-
         navList.innerHTML = "";
         itemsContainer.innerHTML = "";
-
-        // --- Renderizar Navegación (sin cambios) ---
         const allLi = document.createElement('li');
         allLi.className = 'menu__content__nav__item';
-        if (this.activeFilter === 'ALL') {
+        if (this.activeFilter === 'All') {
             allLi.classList.add('menu__content__nav__item--active');
         }
-        allLi.innerHTML = `<a>ALL</a>`;
+        allLi.innerHTML = `<a>All</a>`;
         navList.appendChild(allLi);
 
         Store.categories.forEach(category => {
             const li = document.createElement('li');
             li.className = 'menu__content__nav__item';
-            const categoryNameUpper = category.name.toUpperCase();
-            if (this.activeFilter === categoryNameUpper) {
+            const categoryName = this.capitalize(category.name);
+            if (this.activeFilter === categoryName) {
                 li.classList.add('menu__content__nav__item--active');
             }
-            li.innerHTML = `<a>${categoryNameUpper}</a>`;
+            li.innerHTML = `<a>${categoryName}</a>`;
             navList.appendChild(li);
         });
 
-        // --- Renderizar Productos ---
         const productsByCategory = {};
         for (const product of Store.products) {
-            const categoryName = product.categories.name.toUpperCase();
+            const categoryName = this.capitalize(product.categories.name);
             if (!productsByCategory[categoryName]) {
                 productsByCategory[categoryName] = [];
             }
@@ -100,7 +96,7 @@ export class Menu extends HTMLElement {
         }
 
         for (const categoryName in productsByCategory) {
-            if (this.activeFilter === 'ALL' || this.activeFilter === categoryName) {
+            if (this.activeFilter === 'All' || this.activeFilter === categoryName) {
                 const sectionEl = document.createElement('section');
                 sectionEl.className = 'menu__content__category';
                 
@@ -112,12 +108,10 @@ export class Menu extends HTMLElement {
                 productsByCategory[categoryName].forEach(product => {
                     const itemDiv = document.createElement('div');
                     itemDiv.className = 'menu__item';
-                    
-                    // MODIFICADO: Añadimos el botón '+' al innerHTML
                     itemDiv.innerHTML = `
                         <img class="menu__item__img" src="${product.url_image}" alt="${product.name}">
                         <div class="menu__item__details">
-                            <h3 class="menu__item__title">${product.name.toUpperCase()}</h3>
+                            <h3 class="menu__item__title">${this.capitalize(product.name)}</h3>
                             <p class="menu__item__description">${product.description}</p>
                         </div>
                         <span class="menu__item__price">$${product.price}</span>

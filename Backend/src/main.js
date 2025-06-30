@@ -20,6 +20,10 @@ app.use(express.json());
 
 app.use('/v1', apiRouter);
 
+app.use('/',(req, res, next) => {
+    res.status(200).json({ message: `🚀 Servidor corriendo en http://localhost:${PORT}` });
+});
+
 app.use((req, res, next) => {
     res.status(404).json({ message: 'Ruta no encontrada' });
 });

@@ -6,7 +6,7 @@ export const observerMixim = {
     removeObserver(obs) {
         this.observers.delete(obs);
     },
-    notify(obs) {
+    notify() {
         this.observers.forEach((obs) => obs());
     },
 };
