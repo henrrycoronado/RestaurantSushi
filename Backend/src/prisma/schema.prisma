@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model categories {
+  id       Int        @id @default(autoincrement())
+  name     String     @db.VarChar(50)
+  products products[]
+}
+
+model likespublications {
+  id             Int           @id @default(autoincrement())
+  user_id        Int?
+  publication_id Int?
+  publications   publications? @relation(fields: [publication_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users          users?        @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([user_id, publication_id])
+}
+
+model orders {
+  id           Int            @id @default(autoincrement())
+  user_id      Int?
+  date         DateTime?      @default(now()) @db.Timestamp(6)
+  state        String?        @default("pendiente") @db.VarChar(20)
+  users        users?         @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  ordersdetail ordersdetail[]
+}
+
+model ordersdetail {
+  id         Int       @id @default(autoincrement())
+  order_id   Int?
+  product_id Int?
+  amount     Int
+  subtotal   Decimal   @db.Decimal(10, 2)
+  orders     orders?   @relation(fields: [order_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  products   products? @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model products {
+  id           Int            @id @default(autoincrement())
+  name         String         @db.VarChar(100)
+  description  String
+  price        Decimal        @db.Decimal(10, 2)
+  url_image    String?
+  category_id  Int?
+  ordersdetail ordersdetail[]
+  categories   categories?    @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model publications {
+  id                Int                 @id @default(autoincrement())
+  user_id           Int?
+  title             String              @db.VarChar(150)
+  content           String
+  url_image         String?
+  creation_date     DateTime?           @default(now()) @db.Timestamp(6)
+  likespublications likespublications[]
+  users             users?              @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model reservations {
+  id           Int       @id @default(autoincrement())
+  user_name    String    @db.VarChar(100)
+  email        String    @db.VarChar(100)
+  phone_number String?   @db.VarChar(8)
+  date         DateTime  @db.Date
+  time         DateTime  @db.Time(6)
+  diners       Int
+  request_date DateTime? @default(now()) @db.Timestamp(6)
+  state        String?   @default("pendiente") @db.VarChar(20)
+}
+
+model users {
+  id                Int                 @id @default(autoincrement())
+  name              String              @db.VarChar(100)
+  email             String              @unique @db.VarChar(100)
+  phone_number      String              @db.VarChar(8)
+  address           String              @db.VarChar(100)
+  password          String
+  rol               String?             @default("usuario") @db.VarChar(20)
+  creation_date     DateTime?           @default(now()) @db.Timestamp(6)
+  likespublications likespublications[]
+  orders            orders[]
+  publications      publications[]
+}
