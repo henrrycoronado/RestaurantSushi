@@ -9,13 +9,51 @@ export class Menu extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
         
-        this.activeFilter = 'All'; 
+        this.activeFilter = 'ALL';
+        this.isLoading = false;
         this.render = this.render.bind(this);
         Store.addObserver(this.render);
     }
+
     capitalize(string) {
         if (!string) return '';
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();  
+    }
+
+    addMoreProducts() {
+        console.log("Añadiendo nuevos productos...");
+        this.isLoading = true;
+
+        const itemsContainer = this.shadowRoot.querySelector(".menu__content__items-container");
+        const productosNuevos = Store.products.slice(0, 5);
+        const observadoActual = this.shadowRoot.querySelector("#observado");
+        if (observadoActual) {
+            observadoActual.id = "";
+        }
+        productosNuevos.forEach(product => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'menu__item';
+            itemDiv.innerHTML = `
+                <img class="menu__item__img" src="${product.url_image}" alt="${product.name}">
+                <div class="menu__item__details">
+                    <h3 class="menu__item__title">${this.capitalize(product.name)}</h3>
+                    <p class="menu__item__description">${product.description}</p>
+                </div>
+                <span class="menu__item__price">$${product.price}</span>
+                <button class="add-to-cart-btn" data-product-id="${product.id}" title="Añadir al carrito">+</button>
+            `;
+            itemsContainer.appendChild(itemDiv);
+        });
+
+        const todosLosItems = itemsContainer.querySelectorAll(".menu__item");
+        if (todosLosItems.length > 1) {
+            const nuevoPenultimo = todosLosItems[todosLosItems.length - 2];
+            nuevoPenultimo.id = "observado";
+        }
+
+        setTimeout(() => {
+            this.isLoading = false;
+        }, 500);
     }
 
     async connectedCallback() {
@@ -33,13 +71,27 @@ export class Menu extends HTMLElement {
         } else {
             this.render();
         }
+        const container = this.shadowRoot.querySelector(".menu__content__items-container");
+        container.addEventListener('scroll', (event) =>{
+            const penultimo = container.querySelector("#observado");
+            if (!penultimo) return;
+            const containerRect = container.getBoundingClientRect();
+            const penultimoRect = penultimo.getBoundingClientRect();
+            const esVisible = penultimoRect.top < containerRect.bottom + 100;
+
+            if (esVisible && !this.isLoading) {
+                this.addMoreProducts();
+            }
+        });
 
         const navList = this.shadowRoot.querySelector(".menu__content__nav__list");
         navList.addEventListener("click", (event) => {
             const link = event.target.closest('a');
+            const container = this.shadowRoot.querySelector(".menu__content__items-container");
             if (link) {
                 const newFilter = link.textContent.trim().toUpperCase();
                 this.activeFilter = newFilter;
+                container.scrollY = 0;
                 this.render();
             }
         });
@@ -60,6 +112,7 @@ export class Menu extends HTMLElement {
         Store.removeObserver(this.render);
     }
     
+    
     render() {
         const navList = this.shadowRoot.querySelector(".menu__content__nav__list");
         const itemsContainer = this.shadowRoot.querySelector(".menu__content__items-container");
@@ -69,7 +122,7 @@ export class Menu extends HTMLElement {
         itemsContainer.innerHTML = "";
         const allLi = document.createElement('li');
         allLi.className = 'menu__content__nav__item';
-        if (this.activeFilter === 'All') {
+        if (this.activeFilter === 'ALL') {
             allLi.classList.add('menu__content__nav__item--active');
         }
         allLi.innerHTML = `<a>All</a>`;
@@ -79,51 +132,61 @@ export class Menu extends HTMLElement {
             const li = document.createElement('li');
             li.className = 'menu__content__nav__item';
             const categoryName = this.capitalize(category.name);
-            if (this.activeFilter === categoryName) {
+            if (this.activeFilter === categoryName.toUpperCase()) {
                 li.classList.add('menu__content__nav__item--active');
             }
             li.innerHTML = `<a>${categoryName}</a>`;
             navList.appendChild(li);
         });
+        
+        let productsToRender = [];
+        if (this.activeFilter === 'ALL') {
+            productsToRender = [...Store.products];
+        } else {
+            productsToRender = Store.products.filter(p => this.capitalize(p.categories.name).toUpperCase() === this.activeFilter);
+        }
 
+        let finalProducts = [...productsToRender];
+        const initialCount = finalProducts.length;
+        if (initialCount > 0 && initialCount < 10) {
+            let i = 0;
+            while (finalProducts.length < 10) {
+                finalProducts.push(productsToRender[i % initialCount]);
+                i++;
+            }
+        }
+        
         const productsByCategory = {};
-        for (const product of Store.products) {
+        for (const product of finalProducts) {
             const categoryName = this.capitalize(product.categories.name);
             if (!productsByCategory[categoryName]) {
                 productsByCategory[categoryName] = [];
             }
             productsByCategory[categoryName].push(product);
         }
-
+        let contador = 0;
         for (const categoryName in productsByCategory) {
-            if (this.activeFilter === 'All' || this.activeFilter === categoryName) {
-                const sectionEl = document.createElement('section');
-                sectionEl.className = 'menu__content__category';
-                
-                const titleEl = document.createElement('h2');
-                titleEl.className = 'menu__content__category__title';
-                titleEl.textContent = categoryName;
-                sectionEl.appendChild(titleEl);
 
-                productsByCategory[categoryName].forEach(product => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'menu__item';
-                    itemDiv.innerHTML = `
-                        <img class="menu__item__img" src="${product.url_image}" alt="${product.name}">
-                        <div class="menu__item__details">
-                            <h3 class="menu__item__title">${this.capitalize(product.name)}</h3>
-                            <p class="menu__item__description">${product.description}</p>
-                        </div>
-                        <span class="menu__item__price">$${product.price}</span>
-                        <button class="add-to-cart-btn" data-product-id="${product.id}" title="Añadir al carrito">
-                            +
-                        </button>
-                    `;
-                    sectionEl.appendChild(itemDiv);
-                });
-
-                itemsContainer.appendChild(sectionEl);
-            }
+            productsByCategory[categoryName].forEach(product => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'menu__item';
+                itemDiv.innerHTML = `
+                    <img class="menu__item__img" src="${product.url_image}" alt="${product.name}">
+                    <div class="menu__item__details">
+                        <h3 class="menu__item__title">${this.capitalize(product.name)}</h3>
+                        <p class="menu__item__description">${product.description}</p>
+                    </div>
+                    <span class="menu__item__price">$${product.price}</span>
+                    <button class="add-to-cart-btn" data-product-id="${product.id}" title="Añadir al carrito">
+                        +
+                    </button>
+                `;
+                if(contador == finalProducts.length -2){
+                    itemDiv.id = "observado";
+                }
+                itemsContainer.appendChild(itemDiv);
+                contador ++;
+            });
         }
     }
 }
