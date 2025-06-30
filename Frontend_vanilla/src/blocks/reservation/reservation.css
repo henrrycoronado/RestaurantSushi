@@ -207,7 +207,7 @@ reservation-page {
     text-align: center;
     margin-top: 15px;
     font-size: 14px;
-    display: none; /* Oculto por defecto */
+    display: none; 
 }
 
 .form-feedback.visible {

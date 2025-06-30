@@ -11,8 +11,6 @@ cart-page {
     height: 100%;
     gap: 10px;
 }
-
-/* --- Columna Izquierda: Presentación --- */
 .cart__presentation {
     position: relative;
     display: flex;
@@ -43,7 +41,7 @@ cart-page {
     color: #EFE7D2;
 }
 
-/* --- Columna Derecha: Contenido --- */
+
 .cart__content {
     display: flex;
     flex-direction: column;

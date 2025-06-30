@@ -1,5 +1,3 @@
-// src/blocks/blog/blog.js (CÓDIGO COMPLETO Y CORREGIDO)
-
 import { APIService } from '../../services/APIService.js';
 import { Store } from '../../services/Store.js';
 
@@ -18,19 +16,17 @@ export class Blog extends HTMLElement {
     async connectedCallback() {
         Store.addObserver(this.render);
 
-        // Pedimos las publicaciones a la API solo si no las tenemos
         if (Store.publications.length === 0) {
             try {
                 const publications = await APIService.getPublications();
-                Store.setPublications(publications); // Guardamos en el Store (esto disparará render)
+                Store.setPublications(publications); 
             } catch (error) {
                 console.error("No se pudieron cargar las publicaciones", error);
             }
         } else {
-            this.render(); // Si ya las tenemos, solo renderizamos
+            this.render();
         }
 
-        // Event listener para los filtros de navegación
         this.shadowRoot.querySelector(".blog__content__nav__list").addEventListener("click", (event) => {
             const link = event.target.closest('a');
             if (link) {
@@ -42,13 +38,11 @@ export class Blog extends HTMLElement {
             }
         });
 
-        // Event listener para los artículos (usando delegación de eventos)
         this.shadowRoot.querySelector(".blog__articles-container").addEventListener("click", event => {
             const articleLink = event.target.closest('.blog__article__title-link, .blog__article__img');
             if (articleLink) {
                 event.preventDefault();
                 const articleId = articleLink.dataset.id;
-                // CAMBIO: Usamos el formato de ruta correcto del router
                 app.router.go(`/article-${articleId}`); 
             }
         });
@@ -64,7 +58,6 @@ export class Blog extends HTMLElement {
         
         if (!navList || !articlesContainer) return;
 
-        // --- Renderizar Navegación y Botón de Crear ---
         navList.innerHTML = `
             <li class="blog__content__nav__item ${this.activeFilter === 'ALL NEWS' ? 'blog__content__nav__item--active' : ''}"><a>ALL NEWS</a></li>
         `;
@@ -77,13 +70,11 @@ export class Blog extends HTMLElement {
             let createButton = header.querySelector(".create-blog-btn");
             if (!createButton) {
                 createButton = document.createElement("a");
-                // CAMBIO: La ruta para crear un nuevo blog
                 createButton.href = "/blogCreate"; 
                 createButton.className = "create-blog-btn"; 
                 createButton.textContent = "Crear Artículo";
                 createButton.onclick = (e) => {
                     e.preventDefault();
-                    // CAMBIO: Usamos la nueva ruta estática para crear
                     app.router.go('/blogCreate');
                 }
                 header.appendChild(createButton);
@@ -93,12 +84,9 @@ export class Blog extends HTMLElement {
             if(createButton) createButton.remove();
         }
 
-        // --- Filtrar Publicaciones ---
         let filteredPublications = [];
         switch (this.activeFilter) {
             case 'FAVORITES':
-                // Nota: La lógica de favoritos requiere que el Store sepa qué publicaciones
-                // le gustan al usuario. Esto se puede cargar al iniciar sesión.
                 filteredPublications = Store.publications.filter(p => Store.likedPublicationIds.has(p.id));
                 break;
             case 'MY ARTICLES':

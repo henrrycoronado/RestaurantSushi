@@ -1,5 +1,3 @@
-// src/blocks/article/article.js (VERSIÓN FINAL CORREGIDA)
-
 import { APIService } from '../../services/APIService.js';
 import { Store } from '../../services/Store.js';
 
@@ -105,7 +103,6 @@ export class Article extends HTMLElement {
         this.shadowRoot.querySelector('#title').value = article.title || '';
         this.shadowRoot.querySelector('#content').value = article.content || '';
 
-        // Limpiamos el formulario de botones viejos antes de añadir uno nuevo
         const oldButton = form.querySelector('.article__button--submit');
         if (oldButton) oldButton.remove();
 
@@ -116,8 +113,6 @@ export class Article extends HTMLElement {
         
         form.onsubmit = (event) => this.handleFormSubmit(event);
         
-        // ** LA CORRECCIÓN **
-        // Añadimos el botón DENTRO del formulario
         form.appendChild(submitButton); 
     }
 

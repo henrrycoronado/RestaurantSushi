@@ -13,7 +13,7 @@ blog-page {
     gap: 10px;
 }
 
-/* --- Columna Izquierda: Presentación --- */
+
 .blog__presentation {
     position: relative;
     display: flex;
@@ -101,7 +101,6 @@ blog-page {
     padding-right: 15px;
 }
 
-/* Estilos para la barra de scroll */
 .blog__articles-container::-webkit-scrollbar {
     width: 8px;
 }
@@ -113,7 +112,6 @@ blog-page {
     border-radius: 20px;
 }
 
-/* Estilos para cada artículo */
 .blog__article {
     display: flex;
     flex-direction: row;

@@ -37,12 +37,11 @@ article-page {
 }
 
 .article__scroll-container {
-    flex-grow: 1; /* Permite que este contenedor ocupe el espacio disponible */
-    overflow-y: auto; /* Habilita el scroll vertical */
+    flex-grow: 1;
+    overflow-y: auto;
     padding-right: 15px;
 }
 
-/* Estilos para la barra de scroll */
 .article__scroll-container::-webkit-scrollbar {
     width: 8px;
 }
@@ -54,7 +53,6 @@ article-page {
     border-radius: 20px;
 }
 
-/* Estilos del contenido */
 .article__header {
     margin-bottom: 30px;
 }
