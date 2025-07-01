@@ -10,9 +10,63 @@ export class Blog extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
         this.activeFilter = 'ALL NEWS';
+        this.isLoading = false;
+        this.maxVisibleProducts = 30;
         this.render = this.render.bind(this);
+        this.funcionObserver = this.funcionObserver.bind(this);
     }
+    funcionObserver(entries){
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log("entrando");
+                this.addMoreBlogs();
+            } else {
+                console.log('Elemento no visible');
+            }
+        });
+    }
+    addMoreBlogs(){
+        console.log("h");
+        this.isLoading = true;
+        const itemsContainer = this.shadowRoot.querySelector(".blog__articles-container");
+        const blogsNuevos = Store.publications.slice(0, 10);        
+        const observadoActual = this.shadowRoot.querySelector("#observado");
+        if (observadoActual) {
+            itemsContainer.removeChild(observadoActual);
+        }
+        blogsNuevos.forEach(article => {
+            const articleElement = document.createElement("div");
+            articleElement.className = "blog__article";
+            
+            const authorName = article.users ? article.users.name : 'Anónimo';
 
+            articleElement.innerHTML = `
+                <img class="blog__article__img" src="${article.url_image && article.url_image !== 'vacio' ? article.url_image : '/src/assets/article-placeholder.png'}" alt="${article.title}" data-id="${article.id}">
+                <div class="blog__article__details">
+                    <span class="blog__article__date">${new Date(article.creation_date).toLocaleDateString()}</span>
+                    
+                    <a href="/article-${article.id}" class="blog__article__title-link" data-id="${article.id}">
+                        <h3 class="blog__article__title">${article.title}</h3>
+                    </a>
+                    <p class="blog__article__excerpt">${article.content.substring(0, 100)}...</p>
+                    <span class="blog__article__author">Autor: ${authorName}</span>
+                </div>
+            `;
+            itemsContainer.appendChild(articleElement);
+        });
+        let currentItems = itemsContainer.querySelectorAll(".blog__article");
+        if (currentItems.length > this.maxVisibleProducts) {
+            const itemsToRemove = currentItems.length - this.maxVisibleProducts;
+            for (let i = 0; i < itemsToRemove; i++) {
+                itemsContainer.removeChild(currentItems[i]);
+            }
+        }
+        itemsContainer.appendChild(observadoActual);
+
+        setTimeout(() => {
+            this.isLoading = false;
+        }, 500);
+    }
     async connectedCallback() {
         Store.addObserver(this.render);
 
@@ -26,7 +80,15 @@ export class Blog extends HTMLElement {
         } else {
             this.render();
         }
-
+        const container = this.shadowRoot.querySelector(".blog__articles-container");
+        const itemObservado = container.querySelector("#observado");
+        const options = {
+            root: container,
+            rootMargin: '0px',
+            threshould: 1.0
+        }
+        const observer = new IntersectionObserver(this.funcionObserver, options);
+        observer.observe(itemObservado);
         this.shadowRoot.querySelector(".blog__content__nav__list").addEventListener("click", (event) => {
             const link = event.target.closest('a');
             if (link) {
@@ -100,15 +162,26 @@ export class Blog extends HTMLElement {
                 break;
         }
 
-        // --- Renderizar Artículos ---
         articlesContainer.innerHTML = ""; 
 
         if (filteredPublications.length === 0) {
             articlesContainer.innerHTML = `<p class="blog__no-articles">No hay artículos que mostrar en esta sección.</p>`;
             return;
         }
+        let finalProducts = [];
+        if(this.activeFilter === "ALL NEWS"){
+            finalProducts = [...filteredPublications];
+            const initialCount = finalProducts.length;
+            if (initialCount > 0 && initialCount < 20) {
+                let i = 0;
+                while (finalProducts.length < 30) {
+                    finalProducts.push(filteredPublications[i % initialCount]);
+                    i++;
+                }
+            }
+        }
 
-        for (const article of filteredPublications) {
+        for (const article of finalProducts) {
             const articleElement = document.createElement("div");
             articleElement.className = "blog__article";
             
@@ -127,6 +200,29 @@ export class Blog extends HTMLElement {
                 </div>
             `;
             articlesContainer.appendChild(articleElement);
+        }
+
+
+        if(this.activeFilter === "ALL NEWS"){
+            const itemsContainer = this.shadowRoot.querySelector(".blog__articles-container");
+            if(itemsContainer){
+                const articleElementObserver = document.createElement("div");
+                articleElementObserver.className = "blog__article";
+                articleElementObserver.id = "observado";
+                articleElementObserver.innerHTML = `
+                <img class="blog__article__img" src="" alt="vacio">
+                <div class="blog__article__details">
+                    <span class="blog__article__date">${new Date().toLocaleDateString()}</span>
+                    
+                    <a href="/" class="blog__article__title-link">
+                        <h3 class="blog__article__title">Pivote</h3>
+                    </a>
+                    <p class="blog__article__excerpt">...</p>
+                    <span class="blog__article__author">Pivote pie</span>
+                </div>
+            `;
+                itemsContainer.appendChild(articleElementObserver);
+            }
         }
     }
 }
