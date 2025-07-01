@@ -11,6 +11,7 @@ export class Menu extends HTMLElement {
         
         this.activeFilter = 'ALL';
         this.isLoading = false;
+        this.maxVisibleProducts = 30;
         this.render = this.render.bind(this);
         Store.addObserver(this.render);
     }
@@ -21,11 +22,10 @@ export class Menu extends HTMLElement {
     }
 
     addMoreProducts() {
-        console.log("Añadiendo nuevos productos...");
         this.isLoading = true;
 
         const itemsContainer = this.shadowRoot.querySelector(".menu__content__items-container");
-        const productosNuevos = Store.products.slice(0, 5);
+        const productosNuevos = Store.products.slice(0, 10);        
         const observadoActual = this.shadowRoot.querySelector("#observado");
         if (observadoActual) {
             observadoActual.id = "";
@@ -44,7 +44,13 @@ export class Menu extends HTMLElement {
             `;
             itemsContainer.appendChild(itemDiv);
         });
-
+        let currentItems = itemsContainer.querySelectorAll(".menu__item");
+        if (currentItems.length > this.maxVisibleProducts) {
+            const itemsToRemove = currentItems.length - this.maxVisibleProducts;
+            for (let i = 0; i < itemsToRemove; i++) {
+                itemsContainer.removeChild(currentItems[i]);
+            }
+        }
         const todosLosItems = itemsContainer.querySelectorAll(".menu__item");
         if (todosLosItems.length > 1) {
             const nuevoPenultimo = todosLosItems[todosLosItems.length - 2];
@@ -71,10 +77,12 @@ export class Menu extends HTMLElement {
         } else {
             this.render();
         }
+        
         const container = this.shadowRoot.querySelector(".menu__content__items-container");
         container.addEventListener('scroll', (event) =>{
             const penultimo = container.querySelector("#observado");
             if (!penultimo) return;
+            
             const containerRect = container.getBoundingClientRect();
             const penultimoRect = penultimo.getBoundingClientRect();
             const esVisible = penultimoRect.top < containerRect.bottom + 100;
@@ -87,11 +95,11 @@ export class Menu extends HTMLElement {
         const navList = this.shadowRoot.querySelector(".menu__content__nav__list");
         navList.addEventListener("click", (event) => {
             const link = event.target.closest('a');
-            const container = this.shadowRoot.querySelector(".menu__content__items-container");
             if (link) {
+                const container = this.shadowRoot.querySelector(".menu__content__items-container");
                 const newFilter = link.textContent.trim().toUpperCase();
                 this.activeFilter = newFilter;
-                container.scrollY = 0;
+                container.scrollTop = 0;
                 this.render();
             }
         });
@@ -120,6 +128,7 @@ export class Menu extends HTMLElement {
         if (!navList || !itemsContainer) return;
         navList.innerHTML = "";
         itemsContainer.innerHTML = "";
+        
         const allLi = document.createElement('li');
         allLi.className = 'menu__content__nav__item';
         if (this.activeFilter === 'ALL') {
@@ -148,9 +157,9 @@ export class Menu extends HTMLElement {
 
         let finalProducts = [...productsToRender];
         const initialCount = finalProducts.length;
-        if (initialCount > 0 && initialCount < 10) {
+        if (initialCount > 0 && initialCount < 20) {
             let i = 0;
-            while (finalProducts.length < 10) {
+            while (finalProducts.length < 20) {
                 finalProducts.push(productsToRender[i % initialCount]);
                 i++;
             }
@@ -164,9 +173,9 @@ export class Menu extends HTMLElement {
             }
             productsByCategory[categoryName].push(product);
         }
+
         let contador = 0;
         for (const categoryName in productsByCategory) {
-
             productsByCategory[categoryName].forEach(product => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'menu__item';
@@ -181,12 +190,15 @@ export class Menu extends HTMLElement {
                         +
                     </button>
                 `;
-                if(contador == finalProducts.length -2){
-                    itemDiv.id = "observado";
-                }
                 itemsContainer.appendChild(itemDiv);
                 contador ++;
             });
+        }
+        
+        const todosLosItems = itemsContainer.querySelectorAll(".menu__item");
+        if (todosLosItems.length > 1) {
+            const penultimo = todosLosItems[todosLosItems.length - 2];
+            penultimo.id = "observado";
         }
     }
 }
